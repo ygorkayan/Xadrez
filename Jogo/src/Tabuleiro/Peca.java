@@ -3,13 +3,13 @@ package Tabuleiro;
 public class Peca {
 
     protected Posicao posicao;
-    private Taboleiro taboleiro;
+    private Tabuleiro tabuleiro;
 
-    public Peca(Taboleiro taboleiro) {
-        this.taboleiro = taboleiro;
+    public Peca(Tabuleiro tabuleiro) {
+        this.tabuleiro = tabuleiro;
     }
 
-    protected Taboleiro getTaboleiro() {
-        return taboleiro;
+    protected Tabuleiro getTabuleiro() {
+        return tabuleiro;
     }
 }

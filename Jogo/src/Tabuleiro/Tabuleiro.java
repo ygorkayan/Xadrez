@@ -1,12 +1,12 @@
 package Tabuleiro;
 
-public class Taboleiro {
+public class Tabuleiro {
 
     private int linhas;
     private int colunas;
     private Peca[][] pecas;
 
-    public Taboleiro(int linhas, int colunas) {
+    public Tabuleiro(int linhas, int colunas) {
         this.linhas = linhas;
         this.colunas = colunas;
         pecas = new Peca[linhas][colunas];
