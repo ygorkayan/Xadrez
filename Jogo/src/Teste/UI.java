@@ -15,10 +15,10 @@ public class UI {
     }
 
     private static void mostrarPecas(PecaXadrez pecas) {
-        if(pecas == null) {
+        if (pecas == null) {
             System.out.print(" -");
         } else {
-            System.out.print(pecas);
+            System.out.print(" " + pecas);
         }
     }
 
