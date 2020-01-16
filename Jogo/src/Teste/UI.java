@@ -49,16 +49,30 @@ public class UI {
         for (int linha = 0; linha < pecas.length; linha++) {
             System.out.print((8 - linha) + " ");
             for (int coluna = 0; coluna < pecas.length; coluna++) {
-                mostrarPecas(pecas[linha][coluna]);
+                mostrarPecas(pecas[linha][coluna], false);
             }
             System.out.println();
         }
         System.out.println("   A B C D E F G H ");
     }
 
-    private static void mostrarPecas(PecaXadrez pecas) {
+    public static void mostrarTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
+        for (int linha = 0; linha < pecas.length; linha++) {
+            System.out.print((8 - linha) + " ");
+            for (int coluna = 0; coluna < pecas.length; coluna++) {
+                mostrarPecas(pecas[linha][coluna], movimentosPossiveis[linha][coluna]);
+            }
+            System.out.println();
+        }
+        System.out.println("   A B C D E F G H ");
+    }
+
+    private static void mostrarPecas(PecaXadrez pecas, boolean pintarFundo) {
+        if(pintarFundo) {
+            System.out.print(ANSI_BLUE_BACKGROUND);
+        }
         if (pecas == null) {
-            System.out.print(" -");
+            System.out.print(" -"+ ANSI_RESET);
         } else {
             if(pecas.getCor() == Cor.BRANCO) {
                 System.out.print(" "+ANSI_WHITE + pecas + ANSI_RESET);
@@ -67,7 +81,6 @@ public class UI {
             }
         }
     }
-
 }
 
 
