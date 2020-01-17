@@ -1,14 +1,19 @@
 package Xadrez;
 
-import Tabuleiro.Tabuleiro;
-import Tabuleiro.Posicao;
 import Tabuleiro.Peca;
+import Tabuleiro.Posicao;
+import Tabuleiro.Tabuleiro;
 import Xadrez.Pecas.Rei;
 import Xadrez.Pecas.Torre;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PartidaXadrez {
 
+    List<Peca> pecasNoTabuleiro;
+    List<Peca> pecasCapturadas;
     private Tabuleiro tabuleiro;
     private int turno;
     private Cor jogadorCorreto;
@@ -17,6 +22,9 @@ public class PartidaXadrez {
         tabuleiro = new Tabuleiro(8, 8);
         turno = 1;
         jogadorCorreto = Cor.BRANCO;
+        pecasNoTabuleiro = new ArrayList<>();
+        pecasCapturadas = new ArrayList<>();
+
         Iniciar();
     }
 
@@ -67,6 +75,12 @@ public class PartidaXadrez {
         Peca p = tabuleiro.removePeca(origem);
         Peca pecaCaputurada = tabuleiro.removePeca(destino);
         tabuleiro.colocarPeca(p, destino);
+
+        if (pecaCaputurada != null) {
+            pecasNoTabuleiro.remove(pecaCaputurada);
+            this.pecasCapturadas.add(pecaCaputurada);
+        }
+
         return pecaCaputurada;
     }
 
@@ -74,7 +88,7 @@ public class PartidaXadrez {
         if (!tabuleiro.posicaoExiste(posicao)) {
             throw new XadrezException("Nao existe peca na posiçao de origem");
         }
-        if(jogadorCorreto != ( (PecaXadrez)tabuleiro.peca(posicao)).getCor()) {
+        if (jogadorCorreto != ((PecaXadrez) tabuleiro.peca(posicao)).getCor()) {
             throw new XadrezException("A pessa escolhida nao é sua");
         }
         if (!tabuleiro.peca(posicao).ePossivelMover()) {
@@ -84,6 +98,7 @@ public class PartidaXadrez {
 
     private void NovoPosicao(char coluna, int linha, PecaXadrez peca) {
         tabuleiro.colocarPeca(peca, new XadrezPosicao(coluna, linha).dePosisao());
+        pecasNoTabuleiro.add(peca);
     }
 
     private void proximoTurno() {

@@ -33,6 +33,6 @@ public class Posicao {
 
     @Override
     public String toString() {
-        return this.linha+", "+this.coluna;
+        return this.linha + ", " + this.coluna;
     }
 }

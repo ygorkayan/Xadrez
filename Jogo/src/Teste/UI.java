@@ -6,7 +6,9 @@ import Xadrez.PecaXadrez;
 import Xadrez.XadrezPosicao;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class UI {
 
@@ -46,11 +48,13 @@ public class UI {
 
     }
 
-    public static void mostrarPartida(PartidaXadrez partidaXadrez) {
+    public static void mostrarPartida(PartidaXadrez partidaXadrez, List<PecaXadrez> capturadas) {
         mostrarTabuleiro(partidaXadrez.getPeca());
         System.out.println();
-        System.out.println("Turno: "+partidaXadrez.getTurno());
-        System.out.println("Aguardando jogador: "+partidaXadrez.getJogadorCorreto());
+        mostrarPecasCapturadas(capturadas);
+        System.out.println();
+        System.out.println("Turno: " + partidaXadrez.getTurno());
+        System.out.println("Aguardando jogador: " + partidaXadrez.getJogadorCorreto());
     }
 
     public static void mostrarTabuleiro(PecaXadrez[][] pecas) {
@@ -76,19 +80,46 @@ public class UI {
     }
 
     private static void mostrarPecas(PecaXadrez pecas, boolean pintarFundo) {
-        if(pintarFundo) {
+        if (pintarFundo) {
             System.out.print(ANSI_BLUE_BACKGROUND);
         }
         if (pecas == null) {
-            System.out.print(" -"+ ANSI_RESET);
+            System.out.print(" -" + ANSI_RESET);
         } else {
-            if(pecas.getCor() == Cor.BRANCO) {
-                System.out.print(" "+ANSI_WHITE + pecas + ANSI_RESET);
+            if (pecas.getCor() == Cor.BRANCO) {
+                System.out.print(" " + ANSI_WHITE + pecas + ANSI_RESET);
             } else {
-                System.out.print(" "+ANSI_YELLOW + pecas + ANSI_RESET);
+                System.out.print(" " + ANSI_YELLOW + pecas + ANSI_RESET);
             }
         }
     }
+
+    private static void mostrarPecasCapturadas(List<PecaXadrez> capturada) {
+        List<PecaXadrez> branca = capturada.stream()
+                .filter(item -> item.getCor() == Cor.BRANCO)
+                .collect(Collectors.toList());
+
+        List<PecaXadrez> preta = capturada.stream()
+                .filter(item -> item.getCor() == Cor.PRETO)
+                .collect(Collectors.toList());
+
+        System.out.println("Peças capturadas: ");
+        System.out.print("Brancas: ");
+        System.out.print(ANSI_WHITE);
+        branca.stream().forEach(item -> System.out.print(item + " "));
+        System.out.print(ANSI_RESET);
+
+        System.out.println();
+
+        System.out.print("Pretas: ");
+        System.out.print(ANSI_YELLOW);
+        preta.stream().forEach(item -> System.out.print(item + " "));
+        System.out.print(ANSI_RESET);
+
+        System.out.println();
+
+    }
+
 }
 
 

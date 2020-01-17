@@ -15,6 +15,10 @@ public class XadrezPosicao {
 
     }
 
+    protected static XadrezPosicao ParaPosicao(Posicao posicao) {
+        return new XadrezPosicao((char) ('a' - posicao.getColuna()), 8 - posicao.getLinha());
+    }
+
     public char getColuna() {
         return coluna;
     }
@@ -25,10 +29,6 @@ public class XadrezPosicao {
 
     protected Posicao dePosisao() {
         return new Posicao(8 - this.linha, coluna - 'a');
-    }
-
-    protected static XadrezPosicao ParaPosicao(Posicao posicao) {
-        return new XadrezPosicao((char) ('a' - posicao.getColuna()), 8 - posicao.getLinha());
     }
 
     @Override

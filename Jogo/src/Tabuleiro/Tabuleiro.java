@@ -46,7 +46,7 @@ public class Tabuleiro {
     }
 
     public Peca removePeca(Posicao posicao) {
-        if(!this.posicaoExiste(posicao)) {
+        if (!this.posicaoExiste(posicao)) {
             throw new TabuleiroException("Essa posiçao nao existe");
         }
         if (peca(posicao) == null) {
