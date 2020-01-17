@@ -3,6 +3,7 @@ package Xadrez;
 import Tabuleiro.Peca;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
+import Xadrez.Pecas.Peao;
 import Xadrez.Pecas.Rei;
 import Xadrez.Pecas.Torre;
 
@@ -206,12 +207,37 @@ public class PartidaXadrez {
     }
 
     private void Iniciar() {
-        NovoPosicao('h', 7, new Torre(tabuleiro, Cor.BRANCO));
-        NovoPosicao('d', 1, new Torre(tabuleiro, Cor.BRANCO));
+        // Pecas Branca
+        NovoPosicao('a', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('b', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('c', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('d', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('e', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('f', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('g', 2, new Peao(tabuleiro, Cor.BRANCO));
+        NovoPosicao('h', 2, new Peao(tabuleiro, Cor.BRANCO));
+
+        NovoPosicao('a', 1, new Torre(tabuleiro, Cor.BRANCO));
+        NovoPosicao('h', 1, new Torre(tabuleiro, Cor.BRANCO));
+
         NovoPosicao('e', 1, new Rei(tabuleiro, Cor.BRANCO));
 
-        NovoPosicao('b', 8, new Torre(tabuleiro, Cor.PRETO));
-        NovoPosicao('a', 8, new Rei(tabuleiro, Cor.PRETO));
+
+
+        // Pecas Preta
+        NovoPosicao('a', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('b', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('c', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('d', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('e', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('f', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('g', 7, new Peao(tabuleiro, Cor.PRETO));
+        NovoPosicao('h', 7, new Peao(tabuleiro, Cor.PRETO));
+
+        NovoPosicao('a', 8, new Torre(tabuleiro, Cor.PRETO));
+        NovoPosicao('h', 8, new Torre(tabuleiro, Cor.PRETO));
+
+        NovoPosicao('e', 8, new Rei(tabuleiro, Cor.PRETO));
     }
 
 }
