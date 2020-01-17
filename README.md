@@ -1,5 +1,6 @@
 # Xadrez
 <p>Um jogo de Xadrez jogado pelo terminal</p>
+<p>o inicio do jogo fica em <b>Jogo/src/Teste/Main.java</b></p>
 
 ## Objetivo
 <p>Construir esse jogo de forma didatica, pois era uma parte do curso que estava fazendo<br>
