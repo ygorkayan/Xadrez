@@ -3,9 +3,7 @@ package Xadrez;
 import Tabuleiro.Peca;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
-import Xadrez.Pecas.Peao;
-import Xadrez.Pecas.Rei;
-import Xadrez.Pecas.Torre;
+import Xadrez.Pecas.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -206,6 +204,7 @@ public class PartidaXadrez {
         return true;
     }
 
+    // Metodo responsavel por colocar as peças no tabuleiro
     private void Iniciar() {
         // Pecas Branca
         NovoPosicao('a', 2, new Peao(tabuleiro, Cor.BRANCO));
@@ -220,9 +219,14 @@ public class PartidaXadrez {
         NovoPosicao('a', 1, new Torre(tabuleiro, Cor.BRANCO));
         NovoPosicao('h', 1, new Torre(tabuleiro, Cor.BRANCO));
 
+        NovoPosicao('c', 1, new Bispo(tabuleiro, Cor.BRANCO));
+        NovoPosicao('f', 1, new Bispo(tabuleiro, Cor.BRANCO));
+
+        NovoPosicao('b', 1, new Cavalo(tabuleiro, Cor.BRANCO));
+        NovoPosicao('g', 1, new Cavalo(tabuleiro, Cor.BRANCO));
+
         NovoPosicao('e', 1, new Rei(tabuleiro, Cor.BRANCO));
-
-
+        NovoPosicao('d', 1, new Rainha(tabuleiro, Cor.BRANCO));
 
         // Pecas Preta
         NovoPosicao('a', 7, new Peao(tabuleiro, Cor.PRETO));
@@ -237,7 +241,14 @@ public class PartidaXadrez {
         NovoPosicao('a', 8, new Torre(tabuleiro, Cor.PRETO));
         NovoPosicao('h', 8, new Torre(tabuleiro, Cor.PRETO));
 
+        NovoPosicao('c', 8, new Bispo(tabuleiro, Cor.PRETO));
+        NovoPosicao('f', 8, new Bispo(tabuleiro, Cor.PRETO));
+
+        NovoPosicao('b', 8, new Cavalo(tabuleiro, Cor.PRETO));
+        NovoPosicao('g', 8, new Cavalo(tabuleiro, Cor.PRETO));
+
         NovoPosicao('e', 8, new Rei(tabuleiro, Cor.PRETO));
+        NovoPosicao('d', 8, new Rainha(tabuleiro, Cor.PRETO));
     }
 
 }

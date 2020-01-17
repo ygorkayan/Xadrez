@@ -5,9 +5,9 @@ import Tabuleiro.Tabuleiro;
 import Xadrez.Cor;
 import Xadrez.PecaXadrez;
 
-public class Torre extends PecaXadrez {
+public class Bispo extends PecaXadrez {
 
-    public Torre(Tabuleiro tabuleiro, Cor cor) {
+    public Bispo(Tabuleiro tabuleiro, Cor cor) {
         super(tabuleiro, cor);
     }
 
@@ -16,40 +16,42 @@ public class Torre extends PecaXadrez {
         boolean[][] mat = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
         Posicao p = new Posicao(0, 0);
 
-        // Movimento para cima
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna());
+        // Movimento para nw
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
         while (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
-            p.setLinha(p.getLinha() - 1);
+            p.setValores(p.getLinha() - 1, p.getColuna() - 1);
         }
         if (getTabuleiro().posicaoExiste(p) && ePecaOponete(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
         }
 
-        // Movimento para direita
-        p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+        // Movimento para ne
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1);
         while (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
-            p.setColuna(p.getColuna() + 1);
+            p.setValores(p.getLinha() - 1, p.getColuna() + 1);
         }
         if (getTabuleiro().posicaoExiste(p) && ePecaOponete(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
         }
 
-        // Movimento para baixo
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna());
+        // Movimento para se
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
         while (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha() + 1, p.getColuna() + 1);
             p.setLinha(p.getLinha() + 1);
         }
         if (getTabuleiro().posicaoExiste(p) && ePecaOponete(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
         }
 
-        // Movimento para esquerda
-        p.setValores(posicao.getLinha(), posicao.getColuna() - 1);
+        // Movimento para se
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1);
         while (getTabuleiro().posicaoExiste(p) && !getTabuleiro().temPeca(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
+            p.setValores(p.getLinha() + 1, p.getColuna() - 1);
             p.setColuna(p.getColuna() - 1);
         }
         if (getTabuleiro().posicaoExiste(p) && ePecaOponete(p)) {
@@ -61,6 +63,6 @@ public class Torre extends PecaXadrez {
 
     @Override
     public String toString() {
-        return "T";
+        return "B";
     }
 }
